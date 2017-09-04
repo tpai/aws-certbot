@@ -32,19 +32,19 @@ Create temporary S3 bucket and DNS record for validation, then clean up after ce
 ### Variable definiton: def.sh
 
 1. Find out which domain be `CNAME` by custom domain `CERTBOT_DOMAIN`, and assign it to `ROUTE53_TARGET_DOMAIN`.
-* Retrieve host zone id by dns name `ROUTE53_TARGET_DOMAIN`.
-* Assign `CERTBOT_DOMAIN` to `S3_BUCKET`.
-* Define `S3_KEY` to be `.well-known/acme-challenge/$CERTBOT_TOKEN`.
+2. Retrieve host zone id by dns name `ROUTE53_TARGET_DOMAIN`.
+3. Assign `CERTBOT_DOMAIN` to `S3_BUCKET`.
+4. Define `S3_KEY` to be `.well-known/acme-challenge/$CERTBOT_TOKEN`.
 
 ### Prehook: auth.sh
 
 1. Create `S3_BUCKET` and put validation file.
-* CNAME `ROUTE53_TARGET_DOMAIN` to s3 bucket endpoint.
+2. CNAME `ROUTE53_TARGET_DOMAIN` to s3 bucket endpoint.
 
 ### Posthook: cleanup.sh
 
 1. Delete `S3_BUCKET` instantly.
-* Delete CNAME record which created at `auth.sh`.
+2. Delete CNAME record which created at `auth.sh`.
 
 ## Reference
 
