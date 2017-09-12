@@ -12,7 +12,7 @@ for ((i=$LENGTH; i>=0; i--)); do
     TARGETS="-d ${DOMAINS[$i]} $TARGETS"
 done
 
-CMD="sudo certbot certonly --manual \
+sudo certbot certonly --manual \
     --preferred-challenges http \
     --email $EMAIL \
     --agree-tos \
@@ -23,9 +23,7 @@ CMD="sudo certbot certonly --manual \
     --expand \
     --debug \
     --staging \
-    $TARGETS"
-
-$CMD || exit 1
+    $TARGETS || exit 1
 
 sudo cp -r /etc/letsencrypt/live/$FIRST_DOMAIN cert
 
