@@ -4,12 +4,14 @@ Shell script for requesting SSL certificate based on Certbot, AWS S3 and Route 5
 
 ## Features
 
-* Reqeust certificate from multiple custom domain which already CNAME to your sub-domain.
+* Reqeust certificate without complex steps.
+* Support multiple domain.
 
 ## Prerequisites
 
-1. Install [aws-cli](http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html#install-bundle-other) and [jq](https://stedolan.github.io/jq/download/)
-2. Check the custom domain that must CNAME to your sub-domain.
+1. Create one user which has `AmazonS3FullAccess` and `AmazonRoute53FullAccess` policy in IAM.
+2. Make sure custom domain CNAME to the target sub-domain which is host zone in Route 53.
+3. Fill up fields in `.env`.
 
 ## Usage
 
@@ -31,7 +33,7 @@ Create temporary S3 bucket and DNS record for validation, then clean up after ce
 
 ### Variable definiton: def.sh
 
-1. Find out which domain be `CNAME` by custom domain `CERTBOT_DOMAIN`, and assign it to `ROUTE53_TARGET_DOMAIN`.
+1. Find out which domain be `CNAME` by custom domain `CERTBOT_DOMAIN`, and assign to `ROUTE53_TARGET_DOMAIN`.
 2. Retrieve host zone id by dns name `ROUTE53_TARGET_DOMAIN`.
 3. Assign `CERTBOT_DOMAIN` to `S3_BUCKET`.
 4. Define `S3_KEY` to be `.well-known/acme-challenge/$CERTBOT_TOKEN`.
