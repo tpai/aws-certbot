@@ -11,10 +11,10 @@ function check_if_aws_exist
 
 function configure_aws_cli
 {
-    echo "> Login to AWS..."
-    printf "${AWS_ACCESS_KEY_ID}\n${AWS_SECRET_ACCESS_KEY}\n${AWS_DEFAULT_REGION}\n${AWS_OUTPUT_FORMAT}\n" | aws configure --profile ${AWS_PROFILE_NAME}
-    aws ecr get-login --no-include-email --profile ${AWS_PROFILE_NAME} | $(sed 's/\-e none //g') || exit 1
-    echo "> Login success"
+    echo "> Setup AWS configuration..."
+    printf "${AWS_ACCESS_KEY_ID}\n${AWS_SECRET_ACCESS_KEY}\n${AWS_DEFAULT_REGION}\n${AWS_OUTPUT_FORMAT}\n" | sudo aws configure
+    sudo chmod 644 ~/.aws/*
+    echo "> Success"
 }
 
 function check_if_jq_exist
@@ -28,7 +28,7 @@ function check_if_jq_exist
             chmod +x ./jq
             cp jq /usr/local/bin
         fi
-        echo "> jq installed"
+        echo "> Installed"
     fi
 }
 
