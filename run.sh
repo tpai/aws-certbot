@@ -25,7 +25,7 @@ CMD="sudo certbot certonly --manual \
     --staging \
     $TARGETS"
 
-$CMD | exit 1
+$CMD || exit 1
 
 sudo cp -r /etc/letsencrypt/live/$FIRST_DOMAIN cert
 
