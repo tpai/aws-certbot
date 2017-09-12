@@ -43,7 +43,7 @@ function check_if_bucket_exists
 function create_bucket
 {
     echo "> Create S3 $1 bucket..."
-    aws s3api create-bucket --acl public-read --bucket $1 --create-bucket-configuration "LocationConstraint=ap-southeast-1"
+    aws s3 mb s3://$1 --region $AWS_DEFAULT_REGION
     echo "> Bucket created"
 }
 
