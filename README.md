@@ -10,7 +10,7 @@ Shell script for requesting SSL certificate based on Certbot, AWS S3 and Route 5
 ## Prerequisites
 
 1. Create one user which has `AmazonS3FullAccess` and `AmazonRoute53FullAccess` policy in IAM.
-2. Make sure custom domain CNAME to the target sub-domain which is host zone in Route 53.
+2. Make sure custom domain CNAME to the target domain which be contained by host zone in Route 53.
 3. Fill up fields in `.env`.
 4. Comment `--staging` option in `run.sh` for production.
 
